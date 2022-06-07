@@ -47,4 +47,10 @@
 		<!--<Compile Include="Platforms\Shared\**\*.cs" />-->
 		<!--<Compile Include="Platforms\iOS\**\*.cs" />-->
 	</ItemGroup>
+
+	<Target Name="BundleGenerators" BeforeTargets="Pack;_LoadPackInputItems">
+		<ItemGroup>
+			<None Include="..\XUnit.Maui.Runner.SourceGenerators\bin\$(Configuration)\**\XUnit.Maui.Runner.SourceGenerators.dll" Pack="true" PackagePath="analyzers\dotnet\cs\XUnit.Maui.Runner.SourceGenerators.dll" Visible="false" />
+		</ItemGroup>
+	</Target>
 </Project>
