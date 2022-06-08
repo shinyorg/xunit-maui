@@ -14,7 +14,7 @@
 		<Authors>xunit;Microsoft;aritchie</Authors>
 		<Owners>aritchie;shinylib</Owners>
 	
-		<PackageId>Shiny.XUnit.Runners.Maui</PackageId>
+		<PackageId>Shiny.Xunit.Runners.Maui</PackageId>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>maui xunit testing tests</PackageTags>
