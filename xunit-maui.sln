@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{38108C7D-345C-4078-8877-E19900D2F47F}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\build.yml = .github\workflows\build.yml
+		nuget.png = nuget.png
 		README.md = README.md
 		version.json = version.json
 	EndProjectSection
