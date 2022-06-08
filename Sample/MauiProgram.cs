@@ -1,6 +1,6 @@
-﻿using Microsoft.Maui.TestUtils.DeviceTests.Runners;
+﻿using XUnit.Maui.Runners;
 
-namespace Microsoft.Maui.TestUtils.DeviceTests.Sample
+namespace Sample
 {
 	public static class MauiProgram
 	{

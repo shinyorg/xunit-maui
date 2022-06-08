@@ -1,7 +1,7 @@
 ﻿using Xunit;
 using Xunit.Abstractions;
 
-namespace Microsoft.Maui.TestUtils.DeviceTests.Sample
+namespace Sample
 {
 	public class UnitTests
 	{

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<UseMaui>true</UseMaui>
@@ -30,8 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\XUnit.Maui.Runner.SourceGenerators\XUnit.Maui.Runner.SourceGenerators.csproj" />
-		<ProjectReference Include="..\XUnit.Maui.Runner\XUnit.Maui.Runner.csproj" />
+		<ProjectReference Include="..\XUnit.Maui.Runners\XUnit.Maui.Runners.csproj" />
 	</ItemGroup>
 
 </Project>
