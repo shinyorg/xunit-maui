@@ -14,9 +14,6 @@ on:
     - dev
     - preview
     - v*
-    paths:
-    - "src/**"
-    - ".github/workflows/**"
 
 jobs:
   build:
