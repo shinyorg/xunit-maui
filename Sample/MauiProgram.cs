@@ -1,4 +1,4 @@
-﻿using XUnit.Maui.Runners;
+﻿using Xunit.Runners.Maui;
 
 namespace Sample
 {

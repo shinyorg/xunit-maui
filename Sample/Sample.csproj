@@ -30,7 +30,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\XUnit.Maui.Runners\XUnit.Maui.Runners.csproj" />
+		<ProjectReference Include="..\xunit.runners.maui\xunit.runners.maui.csproj" />
 	</ItemGroup>
 
 </Project>

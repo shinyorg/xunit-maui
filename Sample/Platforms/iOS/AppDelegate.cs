@@ -27,7 +27,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 //    static void Main(global::System.String[] args)
 //    {
 //#if !SKIP_HEADLESS_RUNNER_APP_DELEGATE_GENERATION
-//        if (global::XUnit.Maui.Runners.HeadlessRunner.MauiTestApplicationDelegate.IsHeadlessRunner(args))
+//        if (global::Xunit.Runners.Maui.HeadlessRunner.MauiTestApplicationDelegate.IsHeadlessRunner(args))
 //        {
 //            global::UIKit.UIApplication.Main(args, null, typeof(global::" + RootNamespace + @"." + headlessDelegateName + @"));
 //        }

@@ -1,0 +1,61 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<Authors>Allan Ritchie</Authors>
+		<Owners>aritchie</Owners>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl></PackageProjectUrl>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReleaseNotes></PackageReleaseNotes>
+		<PackageTags>maui xunit</PackageTags>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/aritchie/xunit-maui</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Assets\credits.html" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="xunit" Version="2.4.1" />
+		<PackageReference Include="xunit.runner.utility" Version="2.4.1" />
+		<!--<PackageReference Include="Microsoft.DotNet.XHarness.TestRunners.Xunit" Version="1.0.0-prerelease.21558.2" />-->
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="Platforms\**\*.cs" />
+		<Compile Remove="Platforms\**\*.cs" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('windows'))">
+		<Compile Include="Platforms\Windows\**\*.cs" />
+		<!--<Compile Include="Platforms\Shared\**\*.cs" />-->
+	</ItemGroup>
+
+	
+	<ItemGroup Condition="$(TargetFramework.Contains('android'))">
+		<Compile Include="Platforms\Android\**\*.cs" />
+		<!--<Compile Include="Platforms\Shared\**\*.cs" />-->
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.Contains('ios')) OR $(TargetFramework.Contains('maccatalyst'))">
+		<Compile Include="Platforms\Apple\**\*.cs" />
+		<!--<Compile Include="Platforms\Shared\**\*.cs" />-->
+		<!--<Compile Include="Platforms\iOS\**\*.cs" />-->
+	</ItemGroup>
+</Project>
