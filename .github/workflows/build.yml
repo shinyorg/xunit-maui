@@ -1,0 +1,60 @@
+name: Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+
+  push:
+    branches:
+    - master
+    - dev
+    - preview
+    - v*
+    paths:
+    - "src/**"
+    - ".github/workflows/**"
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          fetch-depth: 0
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+          dotnet-version: '6.0.x'
+
+    - name: Add .NET 6 Android Workload
+      run: dotnet workload install android
+
+    - name: Add .NET 6 iOS Workload
+      run: dotnet workload install ios
+
+    - name: Add .NET 6 MacCatalyst Workload
+      run: dotnet workload install maccatalyst
+
+    - name: Add MAUI Workload
+      run: dotnet workload install maui
+ 
+    - name: Build
+      run: dotnet build xunit-maui.csproj -property:PublicRelease=true -property:Configuration=Release
+
+    - name: Post NuGet Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: nuget-artifacts
+        path: '**/*.nupkg'
+
+    #- name: Publish NuGets
+    #  if: ${{ github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/v') }}
+    #  run: dotnet nuget push **\*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGETAPIKEY }} --skip-duplicate

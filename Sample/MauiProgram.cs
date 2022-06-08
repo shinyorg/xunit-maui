@@ -4,24 +4,16 @@ namespace Sample
 {
 	public static class MauiProgram
 	{
-		public static MauiApp CreateMauiApp()
-		{
-			var appBuilder = MauiApp.CreateBuilder();
-			appBuilder
-				.ConfigureTests(new TestOptions
+		public static MauiApp CreateMauiApp() => MauiApp
+			.CreateBuilder()
+			.ConfigureTests(new TestOptions
+			{
+				Assemblies =
 				{
-					Assemblies =
-					{
-						typeof(MauiProgram).Assembly
-					}
-				})
-				//.UseHeadlessRunner(new HeadlessRunnerOptions
-				//{
-				//	RequiresUIContext = true,
-				//})
-				.UseVisualRunner();
-
-			return appBuilder.Build();
-		}
+					typeof(MauiProgram).Assembly
+				}
+			})
+			.UseVisualRunner()
+			.Build();
 	}
 }
