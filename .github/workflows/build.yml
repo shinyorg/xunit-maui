@@ -47,7 +47,7 @@ jobs:
       run: dotnet workload install maui
  
     - name: Build
-      run: dotnet build xunit-maui.csproj -property:PublicRelease=true -property:Configuration=Release
+      run: dotnet build -property:PublicRelease=true -property:Configuration=Release
 
     - name: Post NuGet Artifacts
       uses: actions/upload-artifact@v2
