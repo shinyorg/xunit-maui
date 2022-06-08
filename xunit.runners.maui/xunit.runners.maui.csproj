@@ -8,15 +8,16 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 
-		<Authors>Allan Ritchie</Authors>
-		<Owners>aritchie</Owners>
+		<Authors>xunit,Microsoft,aritchie</Authors>
+		<Owners>aritchie,shinylib</Owners>
+		<PackageId>Shiny.XUnit.Runners.Maui</PackageId>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl></PackageProjectUrl>
-		<PackageIcon>icon.png</PackageIcon>
-		<PackageReleaseNotes></PackageReleaseNotes>
-		<PackageTags>maui xunit</PackageTags>
+		<PackageProjectUrl>https://github.com/shinyorg/xunit-maui</PackageProjectUrl>
+		<PackageIcon>nuget.png</PackageIcon>
+		<PackageReleaseNotes>https://github.com/shinyorg/xunit-maui</PackageReleaseNotes>
+		<PackageTags>maui xunit testing tests</PackageTags>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
-		<RepositoryUrl>https://github.com/aritchie/xunit-maui</RepositoryUrl>
+		<RepositoryUrl>https://github.com/shinyorg/xunit-maui</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
@@ -27,6 +28,19 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
+		<IncludeSource>True</IncludeSource>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PublishRepositoryUrl>True</PublishRepositoryUrl>
+		<EmbedUntrackedSources>True</EmbedUntrackedSources>
+	</PropertyGroup>
+	
 	<ItemGroup>
 		<EmbeddedResource Include="Assets\credits.html" />
 	</ItemGroup>
@@ -42,6 +56,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)nuget.png" Pack="true" PackagePath="nuget.png" />
 		<None Include="Platforms\**\*.cs" />
 		<Compile Remove="Platforms\**\*.cs" />
 	</ItemGroup>
