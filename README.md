@@ -1,5 +1,9 @@
 # Xunit.Runners.Maui 
 
+## Ported From
+* https://github.com/xunit/devices.xunit
+* https://github.com/dotnet/maui/tree/main/src/TestUtils
+
 ## Setup
 
 1. Create a new MAUI application.
