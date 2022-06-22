@@ -1,13 +1,9 @@
-﻿#nullable enable
-using System;
-using System.IO;
-using System.Threading.Tasks;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
-using Microsoft.Extensions.DependencyInjection;
+using Application = Android.App.Application;
 
 namespace Xunit.Runners.Maui.HeadlessRunner
 {
