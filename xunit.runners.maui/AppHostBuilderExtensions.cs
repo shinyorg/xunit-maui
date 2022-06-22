@@ -28,17 +28,19 @@ namespace Xunit.Runners.Maui
 			return appHostBuilder;
 		}
 
-//		public static MauiAppBuilder UseHeadlessRunner(this MauiAppBuilder appHostBuilder, HeadlessRunnerOptions options)
-//		{
-//			appHostBuilder.Services.AddSingleton(options);
+        public static MauiAppBuilder UseHeadlessRunner(this MauiAppBuilder appHostBuilder, HeadlessRunnerOptions options)
+        {
+            appHostBuilder.Services.AddSingleton(options);
 
-//#if __ANDROID__ || __IOS__ || MACCATALYST
-//			appHostBuilder.Services.AddTransient(svc => new HeadlessTestRunner(
-//					svc.GetRequiredService<HeadlessRunnerOptions>(),
-//					svc.GetRequiredService<TestOptions>()));
-//#endif
+#if ANDROID || IOS || MACCATALYST
+			appHostBuilder.Services.AddTransient(svc => new HeadlessTestRunner(
+					svc.GetRequiredService<HeadlessRunnerOptions>(),
+					svc.GetRequiredService<TestOptions>()));
+#else
+			throw new InvalidProgramException("Not supported on this platform");
+#endif
 
-//			return appHostBuilder;
-//		}
-	}
+			return appHostBuilder;
+        }
+    }
 }
