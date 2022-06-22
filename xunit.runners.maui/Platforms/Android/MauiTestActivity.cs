@@ -1,15 +1,11 @@
-﻿#nullable enable
-using System;
-using System.Threading.Tasks;
-using Android.OS;
+﻿using Android.OS;
 using AndroidX.AppCompat.App;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Xunit.Runners.Maui.HeadlessRunner
 {
     public abstract class MauiTestActivity : AppCompatActivity
     {
-        public TaskCompletionSource<Bundle> TaskCompletionSource { get; } = new TaskCompletionSource<Bundle>();
+        public TaskCompletionSource<Bundle> TaskCompletionSource { get; } = new();
 
         protected override async void OnCreate(Bundle? savedInstanceState)
         {

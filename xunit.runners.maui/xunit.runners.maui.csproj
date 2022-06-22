@@ -42,22 +42,15 @@
 	
 	<ItemGroup>
 		<EmbeddedResource Include="Assets\credits.html" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="Nerdbank.GitVersioning" Version="3.5.107">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="xunit" Version="2.4.1" />
 		<PackageReference Include="xunit.runner.utility" Version="2.4.1" />
-		<!--<PackageReference Include="Microsoft.DotNet.XHarness.TestRunners.Xunit" Version="1.0.0-prerelease.21558.2" />-->
 		<PackageReference Include="Microsoft.DotNet.XHarness.TestRunners.Xunit" Version="1.0.0-prerelease.22322.1" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <None Remove="Microsoft.DotNet.XHarness.TestRunners.Xunit" />
-	</ItemGroup>
 	<ItemGroup>
 		<None Include="$(MSBuildThisFileDirectory)..\nuget.png" Pack="true" PackagePath="icon.png" />
 		<None Include="$(MSBuildThisFileDirectory)..\readme.md" Pack="true" PackagePath="readme.md" />

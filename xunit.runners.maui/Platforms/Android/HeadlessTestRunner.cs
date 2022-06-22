@@ -1,12 +1,7 @@
-﻿#nullable enable
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Android.App;
-using Android.OS;
+﻿using Android.OS;
 using Microsoft.DotNet.XHarness.TestRunners.Common;
 using Microsoft.DotNet.XHarness.TestRunners.Xunit;
+using Application = Android.App.Application;
 
 namespace Xunit.Runners.Maui.HeadlessRunner
 {

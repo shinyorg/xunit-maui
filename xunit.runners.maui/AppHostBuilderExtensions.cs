@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-//using Xunit.Runners.Maui.HeadlessRunner;
+using Xunit.Runners.Maui.HeadlessRunner;
 using Xunit.Runners.Maui.VisualRunner;
 
 namespace Xunit.Runners.Maui
