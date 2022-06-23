@@ -1,8 +1,4 @@
-﻿#nullable enable
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using ObjCRuntime;
-using UIKit;
+﻿using UIKit;
 
 namespace Xunit.Runners.Maui.HeadlessRunner
 {

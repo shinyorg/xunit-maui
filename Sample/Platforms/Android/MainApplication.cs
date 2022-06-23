@@ -15,18 +15,16 @@ namespace Sample
     }
 }
 
+#if RUN_HEADLESS
+namespace Sample
+{
 
-
-//#if !SKIP_RUNNER_ENTRYPOINT_GENERATION && !SKIP_HEADLESS_RUNNER_ENTRYPOINT_GENERATION && !SKIP_HEADLESS_RUNNER_INSTRUMENTATION_GENERATION
-//namespace " + RootNamespace + @"
-//{
-//	[global::Android.App.Instrumentation(Name = """ + ApplicationId + "." + instrumentationName + @""")]
-//public partial class " + instrumentationName + @" : global::Microsoft.Maui.TestUtils.DeviceTests.Runners.HeadlessRunner.MauiTestInstrumentation
-//	{
-//		protected " + instrumentationName + @"(global::System.IntPtr handle, global::Android.Runtime.JniHandleOwnership transfer)
-//			: base(handle, transfer)
-//		{
-//		}
-//	}
-//}
-//#endif
+    [global::Android.App.Instrumentation]
+    public partial class AndroidMauiTestInstrumentation : global::Xunit.Runners.Maui.HeadlessRunner.MauiTestInstrumentation
+    {
+        protected AndroidMauiTestInstrumentation(global::System.IntPtr handle, global::Android.Runtime.JniHandleOwnership transfer) : base(handle, transfer)
+        {
+        }
+    }
+}
+#endif

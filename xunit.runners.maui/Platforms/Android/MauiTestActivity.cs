@@ -1,9 +1,9 @@
 ﻿using Android.OS;
-using AndroidX.AppCompat.App;
+using Xunit.Runners.Maui.HeadlessRunner;
 
-namespace Xunit.Runners.Maui.HeadlessRunner
+namespace Xunit.Runners.Maui
 {
-    public abstract class MauiTestActivity : AppCompatActivity
+    public abstract class MauiTestActivity : MauiAppCompatActivity
     {
         public TaskCompletionSource<Bundle> TaskCompletionSource { get; } = new();
 
@@ -11,20 +11,24 @@ namespace Xunit.Runners.Maui.HeadlessRunner
         {
             base.OnCreate(savedInstanceState);
 
-            try
+            if (MauiTestInstrumentation.Current != null)
             {
-                var runner = MauiTestInstrumentation.Current.Services.GetRequiredService<HeadlessTestRunner>();
+                try
+                {
 
-                var bundle = await runner.RunTestsAsync();
+                    var runner = MauiTestInstrumentation.Current.Services.GetRequiredService<HeadlessTestRunner>();
 
-                TaskCompletionSource.TrySetResult(bundle);
+                    var bundle = await runner.RunTestsAsync();
+
+                    TaskCompletionSource.TrySetResult(bundle);
+                }
+                catch (Exception ex)
+                {
+                    TaskCompletionSource.TrySetException(ex);
+                }
+
+                Finish();
             }
-            catch (Exception ex)
-            {
-                TaskCompletionSource.TrySetException(ex);
-            }
-
-            Finish();
         }
     }
 }
