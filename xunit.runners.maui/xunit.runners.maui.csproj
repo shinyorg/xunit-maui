@@ -13,17 +13,18 @@
 		<Description>MAUI devices xunit runner</Description>
 		<Authors>xunit;Microsoft;aritchie</Authors>
 		<Owners>aritchie;shinylib</Owners>
-	
+
 		<PackageId>Shiny.Xunit.Runners.Maui</PackageId>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>maui xunit testing tests</PackageTags>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<EnableDefaultCompileItems>true</EnableDefaultCompileItems>
 		<PackageProjectUrl>https://github.com/shinyorg/xunit-maui</PackageProjectUrl>
 		<PackageReleaseNotes>https://github.com/shinyorg/xunit-maui</PackageReleaseNotes>
 		<RepositoryUrl>https://github.com/shinyorg/xunit-maui</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		
+
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -39,7 +40,7 @@
 	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
 		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<EmbeddedResource Include="Assets\credits.html" />
 		<PackageReference Include="Nerdbank.GitVersioning" Version="3.5.107">
@@ -54,20 +55,5 @@
 	<ItemGroup>
 		<None Include="$(MSBuildThisFileDirectory)..\nuget.png" Pack="true" PackagePath="icon.png" />
 		<None Include="$(MSBuildThisFileDirectory)..\readme.md" Pack="true" PackagePath="readme.md" />
-		<None Include="Platforms\**\*.cs" />
-		<Compile Remove="Platforms\**\*.cs" />
-	</ItemGroup>
-
-	<ItemGroup Condition="$(TargetFramework.Contains('windows'))">
-		<Compile Include="Platforms\Windows\**\*.cs" />
-	</ItemGroup>
-
-
-	<ItemGroup Condition="$(TargetFramework.Contains('android'))">
-		<Compile Include="Platforms\Android\**\*.cs" />
-	</ItemGroup>
-
-	<ItemGroup Condition="$(TargetFramework.Contains('ios')) OR $(TargetFramework.Contains('maccatalyst'))">
-		<Compile Include="Platforms\Apple\**\*.cs" />
 	</ItemGroup>
 </Project>
